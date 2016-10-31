@@ -23,11 +23,13 @@ navbarPage("Pollution explorer", id="nav",
                                       checkboxInput("chk_NO2", label = "Nitrogen dioxide", value = FALSE),
                                       checkboxInput("chk_SO2", label = "Sulphur dioxide", value = FALSE),
                                       checkboxInput("chk_O3", label = "Ozone", value = FALSE),
-                                      checkboxInput("chk_PM10", label = "Paticulates 10 µM", value = FALSE),
-                                      checkboxInput("chk_PM25", label = "Paticulates 25 µM", value = FALSE)
+                                      checkboxInput("chk_PM10", label = "Paticulates < 10 µM", value = FALSE),
+                                      checkboxInput("chk_PM25", label = "Paticulates < 25 µM", value = FALSE),
+                                      h5('Radiuses of the pollution circles correspond to the sensor readings.')
+                                      #actionButton("reset", "Reset overlay")
                         ),
                         tags$div(id="cite",
-                                 'Reference'
+                                 'Data collected from the OpenAQ air quality API:', tags$a("https://openaq.org/", href="https://openaq.org/")
                         )
                     )
            )

@@ -5,7 +5,7 @@ library(lattice)
 library(dplyr)
 
 # Leaflet bindings are a bit slow; for now we'll just sample to compensate
-set.seed(100)
+#set.seed(100)
 zipdata <- allzips[sample.int(nrow(allzips), 10000),]
 # By ordering by centile, we ensure that the (comparatively rare) SuperZIPs
 # will be drawn last and thus be easier to see
@@ -24,7 +24,7 @@ function(input, output, session) {
         urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.map-5ebohr46/{z}/{x}/{y}.png",
         attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
       ) %>%
-      setView(lng = 0, lat = 51.5, zoom = 13)
+      setView(lng = 0, lat = 51.5, zoom = 11)
   })
   
   # A reactive expression that returns the set of zips that are
@@ -102,21 +102,21 @@ function(input, output, session) {
     #             stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
     #  addLegend("bottomleft", pal=pal, values=colorData, title=colorBy, layerId="colorLegend")
     
-    if (show_NO2 == TRUE) {
-      leafletProxy("map", data = no2) %>%
-        #clearShapes() %>%
-        addCircles(~longitude, ~latitude, radius=~no2*15, layerId=~no2,
-                   stroke=FALSE, fillOpacity=0.4, fillColor='green') #%>%
-      #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
-      #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
-    }else{
-      leafletProxy("map", data = no2) %>%
-        clearShapes() %>%
-        addCircles(~longitude, ~latitude, radius=0, layerId=~no2,
-                   stroke=FALSE, fillOpacity=0.0, fillColor='blue') #%>%
-      #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
-      #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
-    }
+   # if (show_NO2 == TRUE) {
+   #   leafletProxy("map", data = no2) %>%
+   #     #clearShapes() %>%
+   #     addCircles(~longitude, ~latitude, radius=~no2*15, layerId=~no2,
+   #                stroke=FALSE, fillOpacity=0.4, fillColor='green') #%>%
+   #   #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
+   #   #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
+   # }else{
+   #   leafletProxy("map", data = no2) %>%
+   #     #clearShapes() %>%
+   #     addCircles(~longitude, ~latitude, radius=0, layerId=~no2,
+   #                stroke=FALSE, fillOpacity=0.0, fillColor='blue') #%>%
+   #   #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
+   #   #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
+   # }
     
     
     if (show_SO2 == TRUE) {
@@ -128,7 +128,7 @@ function(input, output, session) {
       #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
     }else{
       leafletProxy("map", data = so2) %>%
-        #clearShapes() %>%
+        clearShapes() %>%
         addCircles(~longitude, ~latitude, radius=0, layerId=~so2,
                    stroke=FALSE, fillOpacity=0., fillColor='red') #%>%
       #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
@@ -185,8 +185,22 @@ function(input, output, session) {
       #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
     }
     
-    
-    
+    if (show_NO2 == TRUE) {
+      leafletProxy("map", data = no2) %>%
+        #clearShapes() %>%
+        addCircles(~longitude, ~latitude, radius=~no2*15, layerId=~no2,
+                   stroke=FALSE, fillOpacity=0.4, fillColor='green') #%>%
+      #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
+      #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
+    }else{
+      leafletProxy("map", data = no2) %>%
+        #clearShapes() %>%
+        addCircles(~longitude, ~latitude, radius=0, layerId=~no2,
+                   stroke=FALSE, fillOpacity=0.0, fillColor='blue') #%>%
+      #addCircles(~longitude, ~latitude, radius=40000, layerId=~zipcode,
+      #           stroke=FALSE, fillOpacity=0.4, fillColor='blue') %>%
+    }
+ 
   })
   
   # # Show a popup at the given location

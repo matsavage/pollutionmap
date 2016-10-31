@@ -27,8 +27,8 @@ cleantable <- allzips %>%
 
 
 alldata <- read.csv('data/latest.csv', header=TRUE, sep=",") 
-#no2data$latitude <- jitter(no2data$latitude)
-#no2data$longitude <- jitter(no2data$longitude)
+#no2$latitude <- jitter(no2$latitude)
+#no2$longitude <- jitter(no2$longitude)
 
 no2 <- subset(alldata, !is.na(no2))
 no2 <- no2[c('latitude','longitude','no2')]
@@ -48,14 +48,14 @@ pm25 <- pm25[c('latitude','longitude','pm25')]
 #poldata$college <- allzips$college * 100
 #poldata$zipcode <- formatC(allzips$zipcode, width=5, format="d", flag="0")
 
-poltable <- no2data %>%
-  select(
-    long  = longitude,
-    lat   = latitude,
-    no_2  = no2,
-    so_2  = so2,
-    o_3   = o3,
-    pm_10 = pm10,
-    pm_25 = pm25
-  )
+ #poltable <- no2data %>%
+ # select(
+ #   long  = longitude,
+ #   lat   = latitude,
+ #   no_2  = no2,
+ #   so_2  = so2,
+ #   o_3   = o3,
+ #   pm_10 = pm10,
+ #   pm_25 = pm25
+ # )
 
