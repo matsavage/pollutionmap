@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import json
 
-url = 'https://api.openaq.org/v1/latest?city=London&has_geo'
+url = 'https://api.openaq.org/v1/latest?has_geo&limit=10000&page=1'
 
 r = requests.get(url)
 json_data = r.json()
@@ -22,9 +22,7 @@ for i in range (0, len(json_data['results'])):
         #out = out.append(pd.DataFrame({var : val}, index = [i]))
         
 var = var.groupby(level=0).sum()
-out = out. join(var)
+out = out.join(var)
 
 
-out.to_csv('latest.csv')    
-
-
+out.to_csv('latest.csv') 
