@@ -1,13 +1,15 @@
-# SuperZIP demo
+# Pollution map
 
-See a version of it live at http://shiny.rstudio.com/gallery/superzip-example.html
+This is a small demo program which will display the longitude and latitiude of weather sensors on a world map, with radiuses corresponding to the sensor value.
 
-You can run this demo with:
-```
-if (!require(devtools))
-  install.packages("devtools")
-devtools::install_github("rstudio/leaflet")
-shiny::runGitHub("rstudio/shiny-examples", subdir="063-superzip-example")
-```
+Data can be drawn from the OpenAQ air quality database using the included python script, which will also format the data for this app.
 
-Data compiled for _Coming Apart: The State of White America, 1960–2010_ by Charles Murray (Crown Forum, 2012). This app was inspired by the Washington Post's interactive feature _[Washington: A world apart](http://www.washingtonpost.com/sf/local/2013/11/09/washington-a-world-apart/)_.
+https://openaq.org/
+
+In the future, I hope to expand this program to draw data from a more complete database, such as the London Air qulality database, which provides hourly updates.
+
+http://www.londonair.org.uk/LondonAir/API/
+
+
+This project would not have been possible without the R Shiny superzip example:
+https://github.com/rstudio/shiny-examples/tree/master/063-superzip-example
